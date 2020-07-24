@@ -34,8 +34,24 @@ const inchToCM = function(inches) {
 
 // IIFE
 // Inmediately Invoked Function Expression
-(function(age) {
-  console.log('Running the Anon function');
-  console.log('Cool');
+/* (function(age) {
   return `You are cool and age ${age}`;
-})(10);
+})(10); */
+
+// Methods!
+// Methods are functions that live inside of an object
+
+const chris = {
+  name: 'Chris Merino',
+  // Method!
+  sayHi() {
+    console.log('Hey Chris');
+    return 'Hey Chris';
+  },
+  // Short Hand Method!
+  yellHi() {
+    console.log('Hey Chris');
+  },
+  // Arrow Function -- Arrow Functions take the scope of the parent
+  wisperHi: () => console.log('Hii Chris, Im a mouse'),
+};
