@@ -15,3 +15,6 @@ const inchToCM = function(inches) {
 
 // Arrow Function
 const inchToCM = inches => inches * 2.54;
+
+// Another example of Arrow Functions!
+const add = (a, b = 3) => a + b;
