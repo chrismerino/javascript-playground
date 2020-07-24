@@ -55,3 +55,14 @@ const chris = {
   // Arrow Function -- Arrow Functions take the scope of the parent
   wisperHi: () => console.log('Hii Chris, Im a mouse'),
 };
+
+// Callback Functions
+// Click Callback
+const button = document.querySelector('.clickMe');
+console.log(button);
+
+function handleClick() {
+  console.log('Great Clicking!');
+}
+
+button.addEventListener('click', handleClick);
