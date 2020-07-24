@@ -31,3 +31,11 @@ const inchToCM = function(inches) {
   name: `${firstName} ${lastName}`,
   age: 0,
 }); */
+
+// IIFE
+// Inmediately Invoked Function Expression
+(function(age) {
+  console.log('Running the Anon function');
+  console.log('Cool');
+  return `You are cool and age ${age}`;
+})(10);
