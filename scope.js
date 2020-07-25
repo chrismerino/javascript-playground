@@ -6,8 +6,10 @@
 
 // console.log(age);
 
-if (1 === 1) {
-  const cool = true;
+function isCool(name) {
+  let cool;
+  if (name === 'Chris') {
+    cool = true;
+  }
+  return cool;
 }
-
-console.log(cool);
