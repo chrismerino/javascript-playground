@@ -33,6 +33,18 @@
       console.log(sayHello('Chris'));
       console.log(sayHey('Matty'));
       console.log(sayHey('Lucy'));
+
+      // Private Variables
+      function createGame(gameName) {
+        let score = 0;
+        return function win() {
+          score++;
+          return `Your game ${gameName} score is ${score}`;
+        };
+      }
+
+      const hockeyGame = createGame('Hockey');
+      const soccerGame = createGame('Soccer');
     </script>
   </body>
 </html>
