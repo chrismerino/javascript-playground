@@ -21,3 +21,11 @@ function toggleRound() {
 }
 
 pic.addEventListener('click', toggleRound);
+pic.alt = 'Hey there';
+
+const custom = document.querySelector('.custom');
+console.log(custom.dataset);
+
+custom.addEventListener('click', function() {
+  alert(`Welcome ${custom.dataset.name} ${custom.dataset.last}`);
+});
