@@ -23,6 +23,8 @@ function buyItem() {
   console.log('Buying items...');
 }
 
-buyButtons.forEach(function(buyButton) {
+function itemLoop(buyButton) {
   buyButton.addEventListener('click', buyItem);
-});
+}
+
+buyButtons.forEach(itemLoop);
