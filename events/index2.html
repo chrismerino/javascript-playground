@@ -8,12 +8,20 @@
   </head>
   <body>
     <div class="wrapper">
-      <form>
+      <a
+        href="https://wesbos.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="wes"
+        >WesBos.com</a
+      >
+
+      <form name="signup">
         <label for="name">Name</label>
-        <input type="text" name="name" id="name" />
+        <input type="text" name="name" id="name" value="Chris" />
         <label for="email">Email</label>
-        <input type="email" name="email" id="email" />
-        <input type="checkbox" name="agree" id="agree" />
+        <input type="email" name="email" id="email" value="test@test.com" />
+        <input required type="checkbox" name="agree" id="agree" />
         <label for="agree">I agree to the terms and conditions</label>
         <hr />
         <button type="submit">Submit</button>
