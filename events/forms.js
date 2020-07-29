@@ -38,3 +38,15 @@ function logEvents(event) {
 }
 
 signUpForm.addEventListener('keyup', logEvents);
+
+// Accesibility to make sure people don't get confused!
+
+function handlePhotoClick(event) {
+  if (event.type === 'click' || event.key === 'Enter') {
+    console.log('You clicked the photo!');
+  }
+}
+
+const photo = document.querySelector('.photo');
+photo.addEventListener('click', handlePhotoClick);
+photo.addEventListener('keyup', handlePhotoClick);
