@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="../base.css" />
   </head>
   <body>
+    <h2>Truthy Values</h2>
+    <h2>Falsy Values</h2>
     <script>
       function slugify(sentence, lowercase) {
         const slug = sentence.replace(/\s/g, '-');
@@ -14,6 +16,12 @@
           return slug.toLowerCase();
         }
         return slug;
+      }
+
+      const name = 'wes';
+
+      function nameIsAwesome(name) {
+        return 'awesome'.includes(name);
       }
     </script>
   </body>
