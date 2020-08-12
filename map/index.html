@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Map</title>
+    <link rel="stylesheet" href="../base.css" />
+  </head>
+  <body>
+    <ul class="prizes"></ul>
+    <script>
+      const person1 = {
+        name: 'chris',
+        age: 100
+      };
+
+      const myMap = new Map();
+      // .set()
+      myMap.set('name', 'chris');
+      myMap.set(100, 'This is a number');
+      myMap.set(person1, 'Really Cool');
+      console.log(myMap);
+
+      const score = 100;
+      const prizes = new Map();
+      prizes.set(100, 'Bear');
+      prizes.set(200, 'Duck');
+      prizes.set(300, 'Car');
+
+      // .get()
+      console.log(`You win a ${prizes.get(score)}`);
+
+      // .size()
+      console.log(prizes.size);
+
+      // Maps keep the order
+      // Select the ul
+      const ul = document.querySelector('.prizes');
+
+      // Only gets the value
+      // prizes.forEach(entry => {
+      //   console.log(entry);
+      // });
+
+      // We get key and value
+      for (const [key, value] of prizes) {
+        console.log(key, value);
+        const li = `<li>${key} - ${value}</li>`;
+        ul.insertAdjacentHTML('beforeend', li);
+      }
+
+      // Using Map if there's need to maintain the order of items
+
+      // .has()
+      // .delete()
+    </script>
+  </body>
+</html>

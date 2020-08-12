@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arrays</title>
+    <link rel="stylesheet" href="../base.css" />
+  </head>
+  <body>
+    <script>
+      const names = ['firstName', 'middleName', 'lastName'];
+      console.log(names.length);
+
+      // Mutation
+      const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+      // const reverseNumbers = numbers.reverse();
+      // Original Array has been mutated
+      // console.log(numbers);
+      // console.log(reverseNumbers);
+
+      // Make a copy of the original array to then mutate it
+      const numbersReversed = [...numbers];
+      numbersReversed.reverse();
+      console.log(numbersReversed);
+      console.log(numbers);
+
+      // Immutable
+      const pizzaSlice = numbers.slice(2, 4);
+      console.log(pizzaSlice);
+
+      // Adding Items at the beginning of the array
+      const newNames = ['one', 'two', 'three', 'four'];
+      const newNamesCopy = ['five', ...newNames];
+      console.log(newNamesCopy);
+
+      // Adding items at the end of the array
+      const anotherExample = ['a', 'b', 'c', 'd', 'e'];
+      const anotherExampleCopy = [...anotherExample, 'f'];
+      console.log(anotherExampleCopy);
+
+      // Adding an item in between the existing items in the array
+      const bikes = ['bianchi', 'miele', 'panasonic', 'miyata'];
+      // First slice the array then add the item and slice it again
+      const newBikes = [...bikes.slice(0, 2), 'benotto', ...bikes.slice(2)];
+      console.log(newBikes);
+
+      // Removing an item from any position in the array
+      // Removing PANASONIC
+      const newBikes2 = [...newBikes.slice(0, 3), ...newBikes.slice(4)];
+      console.log(newBikes2);
+
+      // Finding an ID (of some sort) in an object nested in an array
+      const feedbackComments = [
+        'firstName',
+        'middleName',
+        'lastName',
+        'kait',
+        'anotherName'
+      ];
+
+      function deleteComment(id, comments) {
+        // First, find the Index of the item within the array
+        // Make a new array without that item in it
+        // Return the result array
+      }
+
+      const kaitIndex = feedbackComments.findIndex(
+        comment => comment === 'kait'
+      );
+
+      const newCommentsWithoutKait = [
+        // Get everything up to Kait Index
+        ...feedbackComments.slice(0, kaitIndex),
+        // Everything after Kait Index
+        ...feedbackComments.slice(kaitIndex + 1)
+      ];
+
+      console.log(newCommentsWithoutKait);
+    </script>
+  </body>
+</html>
