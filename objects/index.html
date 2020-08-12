@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../base.css" />
   </head>
   <body>
+    <!-- <input type="text" name="first" value="chris" /> -->
     <script>
       const name = 'Chris';
       const age = 100;
@@ -18,9 +19,37 @@
         clothing: {
           shirts: 10,
           pants: 5
+        },
+        // Method Shorthand
+        sayHello(greeting = 'Hey') {
+          return `${greeting} ${this.name}`;
+        },
+        // Arrow Function
+        sneeze: () => {
+          console.log('AHHHHH CHOOOO');
         }
       };
-      console.log(person);
+
+      person.job = 'Web Developer';
+      person.age = 150;
+
+      // immutable
+      const frozePerson = Object.freeze(person);
+
+      // Access properties by using a string inside square brackets
+      // const propertyToCheck = prompt('What do you want to check?');
+      // console.log(person[propertyToCheck]);
+
+      const nameInput = document.querySelector('[name="first"]');
+
+      // Check if element exists
+      const nameFromInput = nameInput ? nameInput.value : null;
+      // console.log(nameFromInput);
+
+      // to delete properties use 'delete' keyword
+      console.log(delete person.job);
+
+      // Method is a function that lives inside of an object
     </script>
   </body>
 </html>
