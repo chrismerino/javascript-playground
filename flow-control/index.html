@@ -23,6 +23,24 @@
       function nameIsAwesome(name) {
         return 'awesome'.includes(name);
       }
+
+      // Ternary
+      const count = 1;
+      // let word;
+
+      // if (count === 1) {
+      //   word = 'item';
+      // } else {
+      //   word = 'items';
+      // }
+
+      const word = count === 1 ? 'item' : 'items';
+
+      const sentence = `You have ${count} ${word} in your cart`;
+      console.log(sentence);
+
+      const isAdmin = true;
+      if (isAdmin) console.log('user is Admin');
     </script>
   </body>
 </html>
