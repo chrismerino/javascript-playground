@@ -153,6 +153,108 @@
       }
 
       toppings.forEach(logTopping);
+
+      // Map, Filter and Reduce
+      // Pure Functions
+
+      // Map takes in data -> Performs operation
+      console.clear();
+      function addArms(face) {
+        return `OK ${face} OK`;
+      }
+
+      const toys = faces.map(addArms);
+      // Return the same length as the original array
+      console.log(toys);
+
+      function bosify(name) {
+        return `${name} Lastname`;
+      }
+
+      function capitalize(word) {
+        return `${word[0].toUpperCase()}${word.slice(1)}`;
+      }
+
+      const names = ['chris', 'middleName', 'merino']
+        .map(capitalize)
+        .map(bosify);
+      console.log(names);
+
+      // Not mutable
+      const orderTotalWithTax = orderTotals.map(total => total * 1.13);
+      console.log(orderTotalWithTax);
+
+      console.clear();
+
+      // Simulating Getting data from API
+      const cleanPeople = people.map(function(person) {
+        // get their birthday - change to js date
+        const birthday = new Date(person.birthday).getTime();
+
+        const now = Date.now();
+        const age = Math.floor((now - birthday) / 31536000000);
+        // console.log(age);
+
+        // Compare dates
+        // Change to timestamps
+
+        // figure out how old they are
+        // return their full name and birthday in an object
+        return {
+          age,
+          name: `${person.names.first} ${person.names.last}`
+        };
+      });
+
+      console.log(cleanPeople);
+
+      console.clear();
+
+      // Reduce
+
+      function tallyNumbers(tally, currentTotal) {
+        console.log(`The current tally is ${tally}`);
+        console.log(`The current total is ${currentTotal}`);
+        console.log('-------');
+        // Return the current tally PLUS the amoung of this order
+        return tally + currentTotal;
+      }
+
+      const allOrders = orderTotals.reduce(tallyNumbers, 0);
+      // Returns the total
+      console.log(allOrders);
+
+      console.clear();
+
+      function invertoryReducer(totals, item) {
+        console.log(`Lopping over ${item.type}`);
+
+        // Increment the type by 1
+        totals[item.type] = totals[item.type] + 1 || 1;
+
+        // totals.shirt ? totals.shirt + 1 : (totals.shirt = 1);
+
+        /*
+        // Optional (explained)
+        if (totals.shirt) {
+          totals.shirt = totals.shirt + 1;
+        } else {
+          totals.shirt = 1;
+        }
+        */
+
+        return totals;
+      }
+
+      const inventoryCounts = inventory.reduce(invertoryReducer, {});
+      console.log(inventoryCounts);
+
+      const totalInventoryPrice = inventory.reduce(
+        (acc, item) => acc + item.price,
+        0
+      );
+
+      console.log(totalInventoryPrice);
     </script>
   </body>
 </html>
