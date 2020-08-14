@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Loops</title>
+    <link rel="stylesheet" href="../base.css" />
+  </head>
+  <body>
+    <script>
+      const numbers = [2, 34, 3, 23, 42, 3, 1, 65, 364, 5, 645, 6];
+
+      const name = 'Wes Bos';
+
+      const person = {
+        name: 'chris',
+        age: 100
+      };
+
+      // For
+      for (let i = 0; i <= 10; i++) {
+        console.log(i);
+      }
+
+      // For of
+      for (const letter of name) {
+        console.log(letter);
+      }
+
+      // For in
+      // Used for looping in keys of an object
+      for (const id in person) {
+        console.log(id);
+      }
+
+      // While Loop
+      let cool = true;
+      let i = 1;
+      while (cool === true) {
+        console.log('You are true');
+        i++;
+        if (i > 100) {
+          cool = false;
+        }
+      }
+    </script>
+  </body>
+</html>
