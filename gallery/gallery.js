@@ -74,6 +74,18 @@ function Gallery(gallery) {
     image.addEventListener('click', event => showImage(event.currentTarget))
   );
 
+  // Loop over each image
+  images.forEach(image => {
+    // Attach an event listener to each one
+    image.addEventListener('keyup', event => {
+      // When is a keyUp'd, check if it was Enter
+      if (event.key === 'Enter') {
+        // If it was, show that image
+        showImage(event.currentTarget);
+      }
+    });
+  });
+
   modal.addEventListener('click', handleClickOutside);
 }
 
