@@ -7,7 +7,36 @@
     <link rel="stylesheet" href="../../base.css" />
   </head>
   <body>
+    <style>
+      .go {
+        margin: 5rem;
+        background: #c0c0c0;
+        padding: 5rem;
+        width: 25rem;
+        transition: all 0.2s;
+      }
+
+      .go.circle {
+        border-radius: 50%;
+      }
+
+      .go.red {
+        background: red;
+      }
+
+      .go.purple {
+        background: purple;
+        color: white;
+      }
+
+      .go.fadeOut {
+        opacity: 0%;
+      }
+    </style>
+    <div class="go">Click Me</div>
     <script>
+      const go = document.querySelector('.go');
+
       function wait(ms = 0) {
         return new Promise(resolve => {
           setTimeout(resolve, ms);
@@ -32,7 +61,7 @@
         });
       }
 
-      async function go() {
+      async function goGo() {
         console.log('starting');
         await wait(2000);
         console.log('running');
@@ -40,7 +69,7 @@
         console.log('ending');
       }
 
-      // go();
+      // goGo();
 
       async function makeDinner() {
         const pizzaPromise1 = makePizza(['pepperoni']);
@@ -51,6 +80,26 @@
       }
 
       makeDinner();
+
+      async function animateAsync(event) {
+        const element = event.currentTarget;
+        // 1. Change the text to GO when clicked
+        element.textContent = 'GO';
+        // 2. Make it a circle after 2 seconds
+        await wait(200);
+        element.classList.add('circle');
+        await wait(500);
+        element.classList.add('red');
+        await wait(250);
+        element.classList.remove('circle');
+        await wait(500);
+        element.classList.remove('red');
+        element.classList.add('purple');
+        await wait(500);
+        element.classList.add('fadeOut');
+      }
+
+      go.addEventListener('click', animateAsync);
 
       // ASYNC IN DIFFERENT FUNCTIONS
       // // Function Declaration
