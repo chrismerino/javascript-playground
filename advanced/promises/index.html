@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promised Land</title>
+    <link rel="stylesheet" href="../../base.css" />
+  </head>
+  <body>
+    <script>
+      console.log('it works');
+      function makePizza(toppings) {
+        return new Promise(function(resolve, reject) {
+          // Wait a few seconds for the Pizza to cook:
+
+          setTimeout(function() {
+            // When you are ready, you can Resolve this Promise
+            resolve(
+              `Here is your pizza with the toppings ${toppings.join(' ')}`
+            );
+          }, 2000);
+
+          // If something went wrong, we can reject this promise
+        });
+      }
+
+      const pepperoniPromise = makePizza(['pepperoni']);
+
+      // Now, to access the actual value returned by the Promise
+      // Also allows to chain sequentially
+      makePizza(['pepperoni'])
+        .then(function(pizza) {
+          console.log(pizza);
+          return makePizza(['ham', 'cheese']);
+        })
+        .then(function(pizza) {
+          console.log(pizza);
+        });
+
+      // Run them concurrently
+      const pizzaPromise1 = makePizza(['ham', 'cheese']);
+      const pizzaPromise2 = makePizza(['ham', 'cheese', 'pepperoni']);
+      const pizzaPromise3 = makePizza([
+        'ham',
+        'cheese',
+        'hot pepper',
+        'meat',
+        'pepperoni'
+      ]);
+
+      pizzaPromise1.then(pizza => {
+        console.log(pizza);
+      });
+      pizzaPromise2.then(pizza => {
+        console.log(pizza);
+      });
+      pizzaPromise3.then(pizza => {
+        console.log(pizza);
+      });
+
+      // Promise.all() will ONLY resolve when all sub-promises resolve
+      const dinnerPromise = Promise.all([
+        pizzaPromise1,
+        pizzaPromise2,
+        pizzaPromise3
+      ]);
+      // dinnerPromise.then(function(pizzas) {
+      //   // We can de-structure the array
+      //   // const [firstPizza, secondPizza, thirdPizza] = pizzas;
+
+      //   // But we can also de-structure it directly from the arguments
+      // });
+
+      // But we can also de-structure it directly from the arguments
+      dinnerPromise.then(function([firstPizza, secondPizza, thirdPizza]) {
+        console.log(firstPizza);
+        console.log(secondPizza);
+        console.log(thirdPizza);
+      });
+
+      // Promise.race() will resolve when the first sub-promise is done.
+    </script>
+  </body>
+</html>
