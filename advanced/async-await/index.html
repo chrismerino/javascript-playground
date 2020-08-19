@@ -14,6 +14,24 @@
         });
       }
 
+      function makePizza(toppings = []) {
+        return new Promise(function(resolve, reject) {
+          // Reject if people try to add pineapple
+          if (toppings.includes('pineapple')) {
+            reject('Seriously? Get out!');
+          }
+
+          const amountOfTimeToBake = 500 + toppings.length * 200;
+          // Wait 1 second for the pizza to cook.
+          setTimeout(function() {
+            // When you are ready, you can resolve this promise.
+            resolve(
+              `Here is your pizza with the toppings ${toppings.join(' ')}`
+            );
+          }, amountOfTimeToBake);
+        });
+      }
+
       async function go() {
         console.log('starting');
         await wait(2000);
@@ -22,7 +40,36 @@
         console.log('ending');
       }
 
-      go();
+      // go();
+
+      async function makeDinner() {
+        const pizzaPromise1 = makePizza(['pepperoni']);
+        const pizzaPromise2 = makePizza(['mushrooms']);
+
+        const [pep, mush] = await Promise.all([pizzaPromise1, pizzaPromise2]);
+        console.log(pep, mush);
+      }
+
+      makeDinner();
+
+      // ASYNC IN DIFFERENT FUNCTIONS
+      // // Function Declaration
+      // async function functionDeclaration() {}
+
+      // // Arrow Function
+      // const arrowFunction = async () => {};
+
+      // // Callback functions
+      // window.addEventListener('click', async function() {});
+
+      // const person = {
+      //   // Method
+      //   async sayHi() {},
+      //   // Method shorthand
+      //   async sayHello() {},
+      //   // Function property
+      //   sayHey: async () => {}
+      // };
     </script>
   </body>
 </html>
