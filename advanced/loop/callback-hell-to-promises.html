@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flow Control</title>
+    <link rel="stylesheet" href="../../base.css" />
+  </head>
+  <body>
+    <style>
+      .go {
+        margin: 5rem;
+        background: #c0c0c0;
+        padding: 5rem;
+        width: 25rem;
+        transition: all 0.2s;
+      }
+
+      .go.circle {
+        border-radius: 50%;
+      }
+
+      .go.red {
+        background: red;
+      }
+
+      .go.purple {
+        background: purple;
+        color: white;
+      }
+
+      .go.fadeOut {
+        opacity: 0%;
+      }
+    </style>
+    <div class="go">Click Me</div>
+    <script>
+      const wait = (ms = 0) =>
+        new Promise(resolve => {
+          setTimeout(resolve, ms);
+        });
+
+      wait(2000).then(() => {
+        console.log('Done!');
+      });
+
+      const go = document.querySelector('.go');
+
+      function animate(event) {
+        const element = event.currentTarget;
+        // 1. Change the text to GO when clicked
+        element.textContent = 'GO';
+        // 2. Make it a circle after 2 seconds
+        wait(200)
+          .then(() => {
+            element.classList.add('circle');
+            return wait(500);
+          })
+          .then(() => {
+            element.classList.add('red');
+            return wait(250);
+          })
+          .then(() => {
+            element.classList.remove('circle');
+            return wait(500);
+          })
+          .then(() => {
+            element.classList.remove('red');
+            element.classList.add('purple');
+            return wait(500);
+          })
+          .then(() => {
+            element.classList.add('fadeOut');
+          });
+      }
+
+      go.addEventListener('click', animate);
+    </script>
+  </body>
+</html>

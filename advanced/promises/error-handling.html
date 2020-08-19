@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Error Handling</title>
+    <link rel="stylesheet" href="../../base.css" />
+  </head>
+  <body>
+    <script>
+      function makeAPizza(toppings = []) {
+        return new Promise(function(resolve, reject) {
+          // Reject if people try to add pineapple
+
+          if (toppings.includes('pineapple')) {
+            reject(`Seriously? Get out!`);
+          }
+
+          const amountOfTimeToBake = 500 + toppings.length * 200;
+
+          setTimeout(function() {
+            resolve(
+              `Here is your pizza when the toppings ${toppings.join(' ')}`
+            );
+          }, amountOfTimeToBake);
+        });
+      }
+
+      function handleError(error) {
+        console.log(error);
+      }
+
+      makeAPizza(['cheese', 'pineapple'])
+        .then(pizza => {
+          console.log(pizza);
+        })
+        .catch(handleError);
+
+      const promise1 = makeAPizza(['pep']);
+      const promise2 = makeAPizza(['pepperoni', 'pineapple']);
+
+      const dinnerPromise = Promise.allSettled([promise1, promise2]);
+      dinnerPromise.then(results => {
+        console.log(results);
+      });
+    </script>
+  </body>
+</html>
