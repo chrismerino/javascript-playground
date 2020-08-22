@@ -1,0 +1,36 @@
+body {
+  background: linear-gradient(
+    to top,
+    #076585,
+    #fff
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  height: 100vh;
+  width: 100%;
+}
+
+.card-currency .card-body #input-currency {
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.card-currency .card-body #output-currency {
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.currency-top {
+  height: 300px;
+}
+
+.currency-bottom {
+  min-height: 200px;
+}
+
+/* #InputCurrency {
+  padding: 10px;
+  line-height: 60px;
+  color: white;
+  text-align: center;
+  font-size: 2.5rem;
+} */
