@@ -9,6 +9,10 @@ body {
   width: 100%;
 }
 
+.card-body .custom-select {
+  height: 70px;
+}
+
 .card-currency .card-body #input-currency {
   font-size: 2.5rem;
   text-align: center;
@@ -24,7 +28,7 @@ body {
 }
 
 .currency-bottom {
-  min-height: 200px;
+  min-height: 300px;
 }
 
 /* #InputCurrency {

@@ -1,4 +1,6 @@
 const dateIndicator = document.querySelector('#date');
+const fromDiv = document.querySelector('[name="from_currency"]');
+const toDiv = document.querySelector('[name="to_currency"]');
 
 function getDate() {
   const today = new Date();
@@ -46,8 +48,16 @@ const currencies = {
 };
 
 function generateOptions(options) {
-  console.log(options);
+  return Object.entries(options)
+    .map(
+      ([currencyCode, currencyName]) =>
+        `<option value=""${currencyCode}>${currencyCode} - ${currencyName}</option>`
+    )
+    .join('');
 }
 
 const optionsHTML = generateOptions(currencies);
-console.log(optionsHTML);
+
+// Populate the options
+fromDiv.innerHTML = optionsHTML;
+toDiv.innerHTML = optionsHTML;
