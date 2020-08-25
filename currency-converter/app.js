@@ -1,6 +1,13 @@
 const dateIndicator = document.querySelector('#date');
-const fromDiv = document.querySelector('[name="from_currency"]');
-const toDiv = document.querySelector('[name="to_currency"]');
+const fromSelect = document.querySelector('[name="from_currency"]');
+const toSelect = document.querySelector('[name="to_currency"]');
+const fromInput = document.querySelector('[name="from_amount"]');
+const endpoint = 'https://api.exchangeratesapi.io/latest';
+
+const form = document.querySelector('.app form');
+
+// This is going to store all the rates
+const ratesByBase = {};
 
 function getDate() {
   const today = new Date();
@@ -10,7 +17,7 @@ function getDate() {
   return `${mm}/${dd}/${yyyy}`;
 }
 
-dateIndicator.textContent = getDate();
+// dateIndicator.textContent = getDate();
 
 const currencies = {
   USD: 'United States Dollar',
@@ -58,6 +65,45 @@ function generateOptions(options) {
 
 const optionsHTML = generateOptions(currencies);
 
-// Populate the options
-fromDiv.innerHTML = optionsHTML;
-toDiv.innerHTML = optionsHTML;
+// Populate the options (Run the function ONCE and store it in a variable)
+fromSelect.innerHTML = optionsHTML;
+toSelect.innerHTML = optionsHTML;
+
+async function fetchRates(base = 'USD') {
+  const response = await fetch(`${endpoint}?base=${base}`);
+  const rates = await response.json();
+  return rates;
+}
+
+async function convert(amount, from, to) {
+  // We could fetch the rates each time but
+  // First check if we even have the rates to convert from that currency
+  if (!ratesByBase[from]) {
+    console.log(
+      `Oh no... We don't have ${from} to convert to ${to}. So gets go get it.`
+    );
+    const rates = await fetchRates(from);
+    console.log(rates);
+    // Store them for next time
+    ratesByBase[from] = rates;
+  }
+
+  // Convert the amount that they passed in.
+  const rate = ratesByBase[from].rates[to];
+  const convertedAmount = rate * amount;
+  console.log(`${amount} ${from} is ${convertedAmount} in ${to}`);
+  return convertedAmount;
+}
+
+async function handleInput(event) {
+  console.log(`test ${fromInput.value}, ${fromSelect.value}, ${toSelect.value}
+    `);
+  const rawAmount = await convert(
+    fromInput.value,
+    fromSelect.value,
+    toSelect.value
+  );
+  console.log(rawAmount);
+}
+
+form.addEventListener('input', handleInput);

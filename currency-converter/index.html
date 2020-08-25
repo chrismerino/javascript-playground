@@ -14,10 +14,12 @@
       integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="./styles.css" />
+    <!-- <link rel="stylesheet" href="./styles.css" /> -->
+    <link rel="stylesheet" href="../base.css" />
+    <link rel="stylesheet" href="./money.css" />
   </head>
   <body>
-    <section class="container">
+    <!-- <section class="container">
       <div class="row justify-content-center pt-5">
         <div class="col-10 col-lg-8">
           <h1 class="display-4 text-center">Currency Converter</h1>
@@ -25,7 +27,7 @@
       </div>
       <div class="row justify-content-center pt-5">
         <div class="col-10 col-md-8 col-lg-6">
-          <div class="card card-currency text-center shadow-lg">
+          <div class="card card-currency text-center shadow-lg mb-5">
             <div class="card-header">
               <p class="text-uppercase text-left" id="date">date</p>
             </div>
@@ -49,10 +51,20 @@
                 </div>
               </div>
 
+              <div class="middle-section p-0 d-flex flex-column align-items-center">
+                <h3>in</h3>
+                  <div class="input-group-append w-75 mt-2">
+                    <select class="custom-select" name="to_currency">
+                      <option selected>Choose...</a>
+                    </select>
+                  </div>
+              </div>
+
               <div
-                class="currency-section currency-bottom p-5 d-flex align-items-center"
+                class="currency-section currency-bottom p-5 d-flex flex-column align-items-stretch"
               >
-                <div class="input-group">
+              <h3>is</h3>
+                <div class="input-group mt-2">
                   <input
                     type="text"
                     class="form-control-plaintext border-bottom mx-2"
@@ -60,18 +72,29 @@
                     placeholder="0"
                     disabled
                   />
-                  <div class="input-group-append">
-                    <select class="custom-select" name="to_currency">
-                      <option selected>Choose...</a>
-                    </select>
-                  </div>
+                  
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
+
+    <div class="app">
+      <form>
+        <input type="number" name="from_amount" />
+        <select name="from_currency">
+          <option>Select a Currency</option>
+        </select>
+        <p>in</p>
+        <select name="to_currency">
+          <option>Select a Currency</option>
+        </select>
+        <p>is</p>
+        <p class="to_amount">$0</p>
+      </form>
+    </div>
 
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
